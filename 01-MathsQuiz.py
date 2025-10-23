@@ -44,7 +44,7 @@ def isCorrect(returned_userAnswer, correctAnswer, userPoints):
         if returned_userAnswer != correctAnswer:
             attempt = +1
             print("\n--------------------------------------------\nYour answer is Incorrect. Try one more time!\n--------------------------------------------\n")
-            returned_userAnswer = displayProblem(returned_firstInt, returned_secondInt, returned_mathOperation)
+            returned_userAnswer = displayProblem(firstInt, secondInt, returned_mathOperation)
             if returned_userAnswer != correctAnswer:
                 print("\n-------------------------------------------------------------\nYour answer is Incorrect once again. No points will be added.\n-------------------------------------------------------------\n")
                 attempt = +71    
@@ -73,10 +73,6 @@ def displayResults(userPoints):
          print(f"\nThat was close! You had acquired a total of {userPoints} points, equivalent to a <<< D >>> grade.\n")
 
 userPoints = [] #Empty List to Add points into
-# returned_firstInt = "" # Initialize empty global var
-# returned_secondInt = "" # Initialize emptyglobal var
-# returned_mathOperation = "" # Initialize empty global var
-
 
 # Runs the game's sequence in a loop if the player chooses to keep playing
 def main():
@@ -85,14 +81,15 @@ def main():
         print("\n---------------------------------------------------------------------------------\n\n<<< Welcome to the Math Quiz Game, a test to challenge your Arithmetic skills >>>\n\n---------------------------------------------------------------------------------\n")
         returned_menuAnswer = displayMenu()
         for questionNumber in range(1,11):
-            returned_firstInt, returned_secondInt = randomInt(returned_menuAnswer)
+            firstInt = randomInt(returned_menuAnswer)
+            secondInt = randomInt(returned_menuAnswer)
             returned_mathOperation = decideOperation()
             print(f"Question #{questionNumber}:\n ")
-            returned_userAnswer = displayProblem(returned_firstInt, returned_secondInt, returned_mathOperation)
+            returned_userAnswer = displayProblem(firstInt, secondInt, returned_mathOperation)
             if returned_mathOperation == "+":
-                correctAnswer = returned_firstInt + returned_secondInt
+                correctAnswer = firstInt + secondInt
             else:
-                correctAnswer = returned_firstInt - returned_secondInt
+                correctAnswer = firstInt - secondInt
             isCorrect(returned_userAnswer, correctAnswer, userPoints)
         displayResults(userPoints)
         while True: # Play again prompt
@@ -110,5 +107,6 @@ def main():
 if __name__ == "__main__":
     main()    
             
+
 
 
