@@ -29,43 +29,43 @@ def choose_joke(jokes):
     return joke
 
 # Displays the joke by waiting to receive an input from the user
-def display_joke(chosen_joke):
-    setup, punchline = chosen_joke.split("?")
+def display_joke(chosenJoke):
+    setup, punchline = chosenJoke.split("?")
     print("\n------------------------------------------------------------\n\n(Press 'Enter' or any key to see the joke's punchline.)\n")
     print(f"------------------------------------------------------------\n\n{setup}...?", end=" ")
-    see_punchline = input()
-    if see_punchline == "":
+    seePunchline = input()
+    if seePunchline == "":
      print(f"\n<<< {punchline.strip()} >>> HAHAHA! \n\n------------------------------------------------------------")
     else: 
-        see_punchline = ""
+        seePunchline = ""
         print(f"\n<<< {punchline.strip()} >>> HAHAHA! \n\n------------------------------------------------------------")
     return setup, punchline
 
 # Plays the joke generator's main sequence of prompts and functions
 def main():
-    see_joke = "joke"
-    while "joke" in see_joke:
+    seeJoke = "joke"
+    while "joke" in seeJoke:
         print("\n----------------------------------------------------\nAlexa: Welcome, user! Would you like to hear a joke?\n----------------------------------------------------\n\n(To hear a joke from Alexa, please type 'Alexa, tell me a joke'. If you'd rather not, type 'No Thanks')")
-        see_joke = input("Answer: ").lower()
-        if "joke" in see_joke:
-            chosen_joke = choose_joke(jokes)
-            returned_setup, returned_punchline = display_joke(chosen_joke)
-            another_joke = "yes"
-            while another_joke != "no":
-                another_joke = input("\nAlexa: Would you like to see another joke? (Type 'Yes' or 'No'): ").lower()
-                if another_joke == "no":
+        seeJoke = input("Answer: ").lower()
+        if "joke" in seeJoke:
+            chosenJoke = choose_joke(jokes)
+            returned_setup, returned_punchline = display_joke(chosenJoke)
+            anotherJoke = "yes"
+            while anotherJoke != "no":
+                anotherJoke = input("\nAlexa: Would you like to see another joke? (Type 'Yes' or 'No'): ").lower()
+                if anotherJoke == "no":
                     print("\nAlexa: Come by and visit for another cackle, user!\n")
-                    see_joke = "no"
-                elif another_joke == "yes":
-                    remove_chosen_joke = chosen_joke
-                    jokes.remove(remove_chosen_joke)
+                    seeJoke = "no"
+                elif anotherJoke == "yes":
+                    removeChosenJoke = chosenJoke
+                    jokes.remove(removeChosenJoke)
                     try:
-                        chosen_joke = choose_joke(jokes)
-                        display_joke(chosen_joke)
+                        chosenJoke = choose_joke(jokes)
+                        display_joke(chosenJoke)
                     except IndexError:
                         print("\nAlexa: You must've enjoyed all my jokes! Unfortunately, I'm all out... Thanks for stopping by! :)")
-                        see_joke = "no"
-                        another_joke = "no"
+                        seeJoke = "no"
+                        anotherJoke = "no"
                 else:
                     print("\nAlexa: Please type only 'Yes' or 'No'.")
         elif "no" in see_joke:
@@ -78,5 +78,6 @@ def main():
 # Determines if script is running directly or is imported, kickstarting the main function
 if __name__ == "__main__":
     main()      
+
 
 
