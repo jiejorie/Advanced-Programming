@@ -72,10 +72,9 @@ def displayResults(userPoints):
     else:
          print(f"\nThat was close! You had acquired a total of {userPoints} points, equivalent to a <<< D >>> grade.\n")
 
-userPoints = [] #Empty List to Add points into
-
 # Runs the game's sequence in a loop if the player chooses to keep playing
 def main():
+    userPoints = [] #Empty List to Add points into
     play = "yes" #keeps the game running
     while play == "yes": #main game loop
         print("\n---------------------------------------------------------------------------------\n\n<<< Welcome to the Math Quiz Game, a test to challenge your Arithmetic skills >>>\n\n---------------------------------------------------------------------------------\n")
@@ -107,6 +106,7 @@ def main():
 if __name__ == "__main__":
     main()    
             
+
 
 
 
