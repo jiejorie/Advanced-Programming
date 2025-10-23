@@ -15,15 +15,11 @@ def displayMenu():
 # Randomly chooses integers based on the difficulty level picked by the player
 def randomInt(menuAnswer):
     if menuAnswer == "easy":
-        firstInt = random.choice(range(10))
-        secondInt = random.choice(range(10))
+        return random.randint(0,10)
     elif menuAnswer == "moderate":
-        firstInt = random.choice(range(10, 100))
-        secondInt = random.choice(range(10, 100))
+        return random.randint(10,100)
     else:
-        firstInt = random.choice(range(100, 1000))
-        secondInt = random.choice(range(10, 1000))
-    return firstInt, secondInt
+        return random.randint(100,1000)
 
 #  Randomly picks between the + and - operation symbol for each problem
 def decideOperation():
@@ -114,4 +110,5 @@ def main():
 if __name__ == "__main__":
     main()    
             
+
 
