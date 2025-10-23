@@ -38,7 +38,7 @@ def displayProblem(returned_firstInt, returned_secondInt, returned_mathOperation
     return userAnswer
 
 # Checks the accuracy of the player's answers while keeping count of the amount of attempts, adding points accordingly
-def isCorrect(returned_userAnswer, correctAnswer, userPoints):
+def isCorrect(returned_userAnswer, correctAnswer, userPoints, firstInt, secondInt, returned_mathOperation):
     attempt = 0
     while attempt < 2:
         if returned_userAnswer != correctAnswer:
@@ -90,7 +90,7 @@ def main():
                 correctAnswer = firstInt + secondInt
             else:
                 correctAnswer = firstInt - secondInt
-            isCorrect(returned_userAnswer, correctAnswer, userPoints)
+            isCorrect(returned_userAnswer, correctAnswer, userPoints, firstInt, secondInt, returned_mathOperation)
         displayResults(userPoints)
         while True: # Play again prompt
             print("\n----------------------\nPlay again? (Yes / No)\n----------------------\n ")
@@ -107,6 +107,7 @@ def main():
 if __name__ == "__main__":
     main()    
             
+
 
 
 
