@@ -56,7 +56,7 @@ def main():
             returnedSetup, returnedPunchline = display_joke(chosenJoke)
             anotherJoke = "yes"
             while anotherJoke != "no":
-                anotherJoke = input("\nAlexa: Would you like to see another joke? (Type 'Yes' or 'No'): ").lower()
+                anotherJoke = input("\nAlexa: Would you like to see another joke? \n(Type 'Yes' or 'No'): ").lower()
                 if anotherJoke == "no":
                     print("\nAlexa: Come by and visit for another cackle, user!\n")
                     seeJoke = "no"
@@ -77,11 +77,12 @@ def main():
             break
         else: 
             seeJoke = "joke"
-            print("\n{decoLine2}\n\nAlexa: Please recheck for any spelling mistakes and read the prompt carefully!\n\n{decoLine2}")
+            print(f"\n{decoLine2}\n\nAlexa: Please re-check for any spelling errors and read the prompt carefully!\n\n{decoLine2}")
 
 # Determines if script is running directly or is imported, kickstarting the main function
 if __name__ == "__main__":
     main()      
+
 
 
 
