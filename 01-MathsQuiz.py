@@ -105,6 +105,3 @@ def main():
 # Determines if script is running directly or is imported, kickstarting the main function
 if __name__ == "__main__":
     main()    
-
-
-
