@@ -28,24 +28,28 @@ def choose_joke(jokes):
     joke = random.choice(jokes)
     return joke
 
+decoLine1 = "----------------------------------------------------"
+decoLine2 = "------------------------------------------------------------"
+
 # Displays the joke by waiting to receive an input from the user
 def display_joke(chosenJoke):
     setup, punchline = chosenJoke.split("?")
-    print("\n------------------------------------------------------------\n\n(Press 'Enter' or any key to see the joke's punchline.)\n")
-    print(f"------------------------------------------------------------\n\n{setup}...?", end=" ")
+    print(f"\n{decoLine2}\n\n(Press 'Enter' or any key to see the joke's punchline.)\n")
+    print(f"{decoLine2}\n\n{setup}...?", end=" ")
     seePunchline = input()
     if seePunchline == "":
-     print(f"\n<<< {punchline.strip()} >>> HAHAHA! \n\n------------------------------------------------------------")
+     print(f"\n<<< {punchline.strip()} >>> HAHAHA! \n\n{decoLine2}")
     else: 
         seePunchline = ""
-        print(f"\n<<< {punchline.strip()} >>> HAHAHA! \n\n------------------------------------------------------------")
+        print(f"\n<<< {punchline.strip()} >>> HAHAHA! \n\n{decoLine2}")
     return setup, punchline
 
 # Plays the joke generator's main sequence of prompts and functions
 def main():
     seeJoke = "joke"
     while "joke" in seeJoke:
-        print("\n----------------------------------------------------\nAlexa: Welcome, user! Would you like to hear a joke?\n----------------------------------------------------\n\n(To hear a joke from Alexa, please type 'Alexa, tell me a joke'. If you'd rather not, type 'No Thanks')")
+        print(f"\n{decoLine1}\nAlexa: Welcome, user! Would you like to hear a joke?\n{decoLine1}")
+        print(f"\n\n(To hear a joke from Alexa, please type 'Alexa, tell me a joke'. If you'd rather not, type 'No Thanks')")
         seeJoke = input("Answer: ").lower()
         if "joke" in seeJoke:
             chosenJoke = choose_joke(jokes)
@@ -73,11 +77,12 @@ def main():
             break
         else: 
             seeJoke = "joke"
-            print("\n<<<<Alexa: Please recheck for any spelling mistakes and read the prompt carefully!>>>>\n\n")
+            print("\n{decoLine2}\n\nAlexa: Please recheck for any spelling mistakes and read the prompt carefully!\n\n{decoLine2}")
 
 # Determines if script is running directly or is imported, kickstarting the main function
 if __name__ == "__main__":
     main()      
+
 
 
 
