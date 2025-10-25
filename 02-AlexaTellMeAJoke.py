@@ -49,7 +49,7 @@ def main():
         seeJoke = input("Answer: ").lower()
         if "joke" in seeJoke:
             chosenJoke = choose_joke(jokes)
-            returned_setup, returned_punchline = display_joke(chosenJoke)
+            returnedSetup, returnedPunchline = display_joke(chosenJoke)
             anotherJoke = "yes"
             while anotherJoke != "no":
                 anotherJoke = input("\nAlexa: Would you like to see another joke? (Type 'Yes' or 'No'): ").lower()
@@ -68,16 +68,17 @@ def main():
                         anotherJoke = "no"
                 else:
                     print("\nAlexa: Please type only 'Yes' or 'No'.")
-        elif "no" in see_joke:
+        elif "no" in seeJoke:
             print("\nAlexa: Too bad! Come by to visit if you feel like having a laugh.")
             break
         else: 
-            see_joke = "joke"
+            seeJoke = "joke"
             print("\n<<<<Alexa: Please recheck for any spelling mistakes and read the prompt carefully!>>>>\n\n")
 
 # Determines if script is running directly or is imported, kickstarting the main function
 if __name__ == "__main__":
     main()      
+
 
 
 
