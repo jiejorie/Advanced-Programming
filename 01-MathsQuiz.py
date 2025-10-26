@@ -28,10 +28,10 @@ def decideOperation():
     return mathOperation
 
 # Displays the problem the player needs to solve, accepting only integer values
-def displayProblem(returned_firstInt, returned_secondInt, returned_mathOperation):
+def displayProblem(firstInt, secondInt, returned_mathOperation):
     while True:
         try:
-            userAnswer = int(input(f"{returned_firstInt} {returned_mathOperation} {returned_secondInt} = "))
+            userAnswer = int(input(f"{firstInt} {returned_mathOperation} {secondInt} = "))
             break
         except ValueError:
             print("\n-------------------------------------\nPlease enter a Number as your answer.\n-------------------------------------\n")
@@ -47,7 +47,7 @@ def isCorrect(returned_userAnswer, correctAnswer, userPoints, firstInt, secondIn
             returned_userAnswer = displayProblem(firstInt, secondInt, returned_mathOperation)
             if returned_userAnswer != correctAnswer:
                 print("\n-------------------------------------------------------------\nYour answer is Incorrect once again. No points will be added.\n-------------------------------------------------------------\n")
-                attempt = +71    
+                attempt = +2    
             else:
                 print("\n-------------------------------------------------------------\nYour answer is Correct! 5 points will be added to your score.\n-------------------------------------------------------------\n")
                 userPoints.append(5)
@@ -105,3 +105,4 @@ def main():
 # Determines if script is running directly or is imported, kickstarting the main function
 if __name__ == "__main__":
     main()    
+
