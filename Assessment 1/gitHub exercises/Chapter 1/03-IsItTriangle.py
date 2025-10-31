@@ -1,9 +1,9 @@
 # EXERCISE 3: IS IT TRIANGLE
 import random
 print("Is it a triangle?")
-side1 = int(input("Enter the first side of your triangle: \n"))
-side2 = int(input("Enter the second side of your triangle: \n"))
-side3 = int(input("Enter the third side of your triangle: \n"))
+side1 = float(input("Enter the first side of your triangle: \n"))
+side2 = float(input("Enter the second side of your triangle: \n"))
+side3 = float(input("Enter the third side of your triangle: \n"))
 
 answers = side1, side2, side3
 
@@ -29,4 +29,5 @@ if firstSide + secondSide >= thirdSide:
         print("\nClassification:\n This Triangle is an Isosceles.") 
 else:
     print("\nThis is unfortunately not a Triangle..")
+
 
