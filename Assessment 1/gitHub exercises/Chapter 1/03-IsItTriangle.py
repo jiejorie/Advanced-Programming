@@ -6,10 +6,11 @@ side2 = float(input("Enter the second side of your triangle: \n"))
 side3 = float(input("Enter the third side of your triangle: \n"))
 
 answers = side1, side2, side3
+answersList = list(answers)
 
 def pick_side():
-    side = random.choice(answers)
-    answers.remove(side)
+    side = random.choice(answerslist)
+    answersList.remove(side)
     return side
 
 firstSide = pick_side()
@@ -29,5 +30,6 @@ if firstSide + secondSide >= thirdSide:
         print("\nClassification:\n This Triangle is an Isosceles.") 
 else:
     print("\nThis is unfortunately not a Triangle..")
+
 
 
