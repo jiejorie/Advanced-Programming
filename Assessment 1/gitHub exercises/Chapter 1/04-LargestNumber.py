@@ -1,12 +1,31 @@
 # EXERCISE 4: LARGEST NUMBER
 print("Checking for the Largest Number")
-firstNum = float(input("\nPlease enter your first number: \n"))
-secondNum = float(input("\nPlease enter your second number: \n"))
-thirdNum = float(input("\nPlease enter your third number: \n"))
 
-if firstNum > secondNum and firstNum > thirdNum:
+while True:
+    try:
+        firstNum = float(input("\nPlease enter your first number: \n"))
+    except ValueError:
+        print("Error: Please only enter a number!\n")
+    else:
+        break
+while True:
+    try:
+        secondNum = float(input("\nPlease enter your second number: \n"))
+    except ValueError:
+        print("Error: Please only enter a number!\n")
+    else:
+        break
+while True:
+    try:
+        thirdNum = float(input("\nPlease enter your third number: \n"))
+    except ValueError:
+        print("Error: Please only enter a number!\n")
+    else:
+        break
+
+if thirdNum < firstNum > secondNum :
     print(f"\nThe largest number is {firstNum}")
-elif secondNum > firstNum and secondNum > thirdNum:
+elif thirdNum < secondNum > firstNum:
     print(f"\nThe largest number is {secondNum}")
 else:
     print(f"\nThe largest number is {thirdNum}")
