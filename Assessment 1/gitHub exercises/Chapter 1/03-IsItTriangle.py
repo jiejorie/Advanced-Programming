@@ -30,6 +30,3 @@ if firstSide + secondSide >= thirdSide:
         print("\nClassification:\n This Triangle is an Isosceles.") 
 else:
     print("\nThis is unfortunately not a Triangle..")
-
-
-
