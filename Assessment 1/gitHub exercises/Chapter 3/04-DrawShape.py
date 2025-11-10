@@ -2,16 +2,19 @@ from tkinter import*
 from tkinter import ttk
 import random
 
+# runs mainloop() when called
 def main():
     gui = MyGUI()
     gui.mainloop()
 
+# holds primary GUI
 class MyGUI(Tk):
     def __init__(self):
         super().__init__()
         self.title("Draw Shape")
         self.geometry("700x600")
 
+        # widgets
         self.TitleFrame = Frame(self)
         self.TitleFrame.pack(pady=20, anchor="n", side="top", padx=20)
 
@@ -24,16 +27,21 @@ class MyGUI(Tk):
         self.canvas = Canvas(self, bg="white", highlightbackground="gray")
         self.canvas.pack(fill="both", expand=True, side="bottom", anchor="center", padx=10, pady=10)
 
+# holds buttons for shape options
 class Pick_shapes(Frame):
+    # allows inheritance
     def __init__(self, parent):
         super().__init__(parent)
+        # initializes parent
         self.parent = parent
+        # widgets
         self.oval_btn = Button(self, text="Oval", bg="Dark blue", fg="White", font=("Arial", 13, "bold"), command=self.draw_oval).grid(row=0, column=0, sticky="ew", pady=5, padx=5)
         self.square_btn = Button(self, text="Square", bg="Dark blue", fg="White", font=("Arial", 13, "bold"), command=self.draw_square).grid(row=0, column=1, sticky="ew", pady=5, padx=5)
         self.rect_btn = Button(self, text="Rectangle", bg="Dark blue", fg="White", font=("Arial", 13, "bold"), command=self.draw_rect).grid(row=0, column=2, sticky="ew", pady=5, padx=5)
         self.triangle_btn = Button(self, text="Triangle", bg="Dark blue", fg="White", font=("Arial", 13, "bold"), command=self.draw_triangle).grid(row=0, column=3, sticky="ew", pady=5, padx=5)
         self.clear_btn = Button(self, text="Clear", bg="Dark red", fg="White", font=("Arial", 13, "bold"), command=self.clear).grid(row=0, column=4, sticky="ew", pady=5, padx=5)
-        
+
+    # draws oval on canvas when clicked
     def draw_oval(self):
         self.oval_btn.config(bg="white")
         def create_oval(event):
@@ -41,19 +49,22 @@ class Pick_shapes(Frame):
                 oval = self.parent.canvas.create_oval(x , y , x + random.randint(30, 100), y + random.randint(30, 100), fill='red', outline="dark red")
         self.parent.canvas.bind("<Button-1>", create_oval)
 
+    # draws square on canvas when clicked
     def draw_square(self):
         def create_square(event):
               x, y = event.x, event.y
               size = random.randint(30,100)
               square = self.parent.canvas.create_rectangle(x, y, x + size, y + size, fill="blue", outline="dark blue")
         self.parent.canvas.bind("<Button-1>", create_square)
-    
+
+    # draws rectangle on canvas when clicked
     def draw_rect(self):
         def create_rect(event):
               x, y = event.x, event.y
               square = self.parent.canvas.create_rectangle(x, y, x + random.randint(30, 100), y + random.randint(30, 100), fill='green1', outline="dark green")
         self.parent.canvas.bind("<Button-1>", create_rect)
 
+    # draws triangle on canvas when clicked
     def draw_triangle(self):
         def create_triangle(event):
               x, y = event.x, event.y
@@ -62,8 +73,10 @@ class Pick_shapes(Frame):
               triangle = self.parent.canvas.create_polygon(x, y, x + sizex, y + sizey, x + (sizex-(sizex*2)), y + sizey, fill='yellow', outline="dark goldenrod")
         self.parent.canvas.bind("<Button-1>", create_triangle)
 
+    # clears canvas
     def clear(self):
          self.parent.canvas.delete("all")
 
+# runs main() if script is directly running
 if __name__ == "__main__":
     main()
