@@ -3,10 +3,12 @@ from tkinter import ttk
 from PIL import Image, ImageTk
 from tkinter import messagebox
 
+# runs mainloop() if called
 def main():
     gui = MyGUI()
     gui.mainloop()
 
+# holds the primary GUI
 class MyGUI(Tk):
     def __init__(self):
         super().__init__()
@@ -16,8 +18,10 @@ class MyGUI(Tk):
         self.maxsize(700, 630)
         self.config(bg="#edd8c5")
 
+        # initialize balance
         self.balance = 10
 
+        # widgets
         self.img = ImageTk.PhotoImage(Image.open("C:/Users\Marcelo/Documents/Margie CC L5/Advanced Programming/Assessment 1/gitHub exercises/Chapter 3/02-CoffeeVendingMachine/banner.png").resize((700, 150)))
         self.bg = Label(self, image=self.img).pack(anchor="n", side="top")
 
@@ -31,6 +35,7 @@ class MyGUI(Tk):
 
         self.protocol("WM_DELETE_WINDOW", self.before_close)
 
+    # popup before exiting
     def before_close(self):
         if messagebox.askyesno("Exit Student Manager","Do you really want to exit?"):
             self.destroy()
@@ -38,15 +43,19 @@ class MyGUI(Tk):
             pass
 
 
-
+# holds interactable widgets
 class MenuFrame(Frame):
+    # allows inheritance
     def __init__(self, parent):
         super().__init__(parent)
+        # initializes parent
         self.parent = parent
         self.config(bg="#edd8c5")
 
+        # initialize drink price
         self.drink_price = 0
 
+        # widgets
         self.CoffeeFrame = CoffeeFrame(self)
         self.CoffeeFrame.grid(row=0, rowspan=2, column=0, padx=15, sticky="nws")
 
@@ -56,36 +65,43 @@ class MenuFrame(Frame):
         self.OrderFrame = OrderFrame(self)
         self.OrderFrame.grid(row=1, column=1, sticky="ews", padx=15)
     
+    # espresso order
     def order_espresso(self):
         self.OrderFrame.order.config(text="Espresso : 2 AED")
         self.drink_price = 2
         return self.drink_price
     
+    # americano order
     def order_americano(self):
         self.OrderFrame.order.config(text="Americano : 2.50 AED")
         self.drink_price = 2.50
         return self.drink_price
     
+    # latte order
     def order_latte(self):
         self.OrderFrame.order.config(text="Latte : 2 AED")
         self.drink_price = 2
         return self.drink_price
     
+    # mocha order
     def order_mocha(self):
         self.OrderFrame.order.config(text="Mocha : 3 AED")
         self.drink_price = 3
         return self.drink_price
     
+    # macchiato order
     def order_macchiato(self):
         self.OrderFrame.order.config(text="Macchiato : 3 AED")
         self.drink_price = 3
         return self.drink_price
     
+    # capuccino order
     def order_capuccino(self):
         self.OrderFrame.order.config(text="Capuccino : 2.50 AED")
         self.drink_price = 2.50
         return self.drink_price
     
+    # checkout process
     def checkout(self):
         if self.drink_price <= 0:
             messagebox.showerror("Transaction Order", message="Please place an order before checking out.")
@@ -100,6 +116,7 @@ class MenuFrame(Frame):
         else:
             messagebox.showwarning("Failed Transaction", message="Transaction was unsuccessful, balance insufficient.")
     
+    # resets menu with any unpaid orders
     def clear(self):
         self.OrderFrame.order.config(text="...")
         self.drink_price = 0
@@ -107,10 +124,12 @@ class MenuFrame(Frame):
         self.CustomizeFrame.sugar_scale.set(0)
 
 
-
+# holds different coffee drink options
 class CoffeeFrame(Frame):
+    # allows inheritance
     def __init__(self, parent):
         super().__init__(parent)
+        # initializes parent
         self.parent = parent
         self.config(bg="#edd8c5")
 
@@ -118,6 +137,7 @@ class CoffeeFrame(Frame):
         self.rowconfigure(4, weight=10)
         self.rowconfigure((5,6,7), weight=1)
 
+        # widgets
         self.coffee_options_txt = Label(self, text="Coffee Options:", font=("Georgia", 12, "bold"), fg="black", bg="#fdefe7").grid(row=0, column=0, columnspan=3, pady=15, ipady=3, sticky="ew")
 
         self.espresso = ImageTk.PhotoImage(Image.open("C:/Users\Marcelo/Documents/Margie CC L5/Advanced Programming/Assessment 1/gitHub exercises/Chapter 3/02-CoffeeVendingMachine/espresso.png").resize((70, 70)))
@@ -152,11 +172,14 @@ class CoffeeFrame(Frame):
         self.capuccino_txt = Label(self, text="Capuccino", font=("Georgia", 9), fg="black", bg="#edd8c5").grid(row=6, column=2)
         self.capuccino_price = Label(self, text="2.50 AED", font=("Georgia", 8), fg="saddle brown", bg="#edd8c5").grid(row=7, column=2)
 
+# holds drink customizer
 class CustomizeFrame(Frame):
+    # allows inheritance
     def __init__(self, parent):
         super().__init__(parent)
         self.config(bg="#edd8c5")
 
+        # widgets
         self.custom_txt = Label(self, text="Customize your drink:", font=("Georgia", 12, "bold"), fg="black", bg="#fdefe7").grid(row=0, column=0, columnspan=3, pady=15, ipady=3, sticky="ew")
 
         self.milk_type = StringVar(value="")
@@ -171,19 +194,25 @@ class CustomizeFrame(Frame):
         self.sugar_scale =  Scale(self, from_=0, to=100, orient=HORIZONTAL, troughcolor="#edd8c5", bg="#fdefe7", bd=0, relief="flat", highlightthickness=0)
         self.sugar_scale.grid(row=4, column=0, columnspan=3, padx=5, pady=5, sticky="ew")
 
+# displays order
 class OrderFrame(Frame):
+    # allows inheritance
     def __init__(self, parent):
         super().__init__(parent)
+        # initializes parent
         self.parent = parent
         self.config(bg="#edd8c5")
 
         self.columnconfigure((0,1), weight=1)
 
+        # widgets
         self.order_txt = Label(self, text="Your total is: ", font=("Georgia", 15, "bold"), fg="black", bg="#edd8c5").grid(row=0, column=0, columnspan=2, pady=10)
         self.order = Label(self, text="...", font=("Georgia", 9, "bold"), fg="black", bg="#fdefe7")
         self.order.grid(row=1, column=0, columnspan=2, padx=5, pady=5, ipady=5, sticky="ew")
 
         self.clear = Button(self, text="Clear", font=("Georgia", 9), fg="#fdefe7", bg="saddle brown", bd=0, command=self.parent.clear).grid(row=3, column=0, pady=5, padx=5, ipadx=5, ipady=5, sticky="we")
         self.checkout = Button(self, text="Checkout", font=("Georgia", 9), fg="#fdefe7", bg="saddle brown", bd=0, command=self.parent.checkout).grid(row=3, column=1, pady=5, padx=5, ipadx=5, ipady=5, sticky="we")
+
+# runs main() if script is directly running
 if __name__ == "__main__":
     main()
