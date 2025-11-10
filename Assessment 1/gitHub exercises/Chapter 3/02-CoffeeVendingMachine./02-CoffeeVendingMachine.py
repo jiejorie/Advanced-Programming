@@ -121,7 +121,7 @@ class MenuFrame(Frame):
         self.OrderFrame.order.config(text="...")
         self.drink_price = 0
         self.CustomizeFrame.milk_type.set("Cow's Milk")
-        self.CustomizeFrame.sugar_scale.set(0)
+        self.CustomizeFrame.sugar_scale.set(100)
 
 
 # holds different coffee drink options
@@ -193,6 +193,7 @@ class CustomizeFrame(Frame):
         self.sugar_amnt_txt = Label(self, text="What sugar %?", font=("Georgia", 10, "bold"), fg="saddle brown", bg="#edd8c5").grid(row=3,column=0, columnspan=3, pady=5)
         self.sugar_scale =  Scale(self, from_=0, to=100, orient=HORIZONTAL, troughcolor="#edd8c5", bg="#fdefe7", bd=0, relief="flat", highlightthickness=0)
         self.sugar_scale.grid(row=4, column=0, columnspan=3, padx=5, pady=5, sticky="ew")
+        self.sugar_scale.set(100)
 
 # displays order
 class OrderFrame(Frame):
@@ -216,3 +217,4 @@ class OrderFrame(Frame):
 # runs main() if script is directly running
 if __name__ == "__main__":
     main()
+
