@@ -95,7 +95,7 @@ def main():
             print("\n----------------------\nPlay again? (Yes / No)\n----------------------\n ")
             play = input("Answer:  ").lower()
             if play == "yes":
-                userPoints = 0
+                userPoints = []
                 break
             elif play == "no":
                 print("\n<<< Thank you so much for playing! Hope you enjoyed the game<3 >>> \n")
@@ -106,5 +106,6 @@ def main():
 # Determines if script is running directly or is imported, kickstarting the main function
 if __name__ == "__main__":
     main()    
+
 
 
